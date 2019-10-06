@@ -1,0 +1,90 @@
+{
+  "list": [
+    {
+      "name": "blabla",
+      "imageLink": "htt",
+      "totalQuantity": 1,
+      "edition": [
+        {
+          "edditionName": "blbl",
+          "quantityInEdition": 1,
+          "detailed": [
+            {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blabla",
+      "imageLink": "htt",
+      "totalQuantity": 1,
+      "edition": [
+        {
+          "edditionName": "blbl",
+          "quantityInEdition": 1,
+          "detailed": [
+            {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            }
+          ]
+        },
+        {
+          "edditionName": "blbl",
+          "quantityInEdition": 1,
+          "detailed": [
+            {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blabla",
+      "imageLink": "htt",
+      "totalQuantity": 1,
+      "edition": [
+        {
+          "edditionName": "blbl",
+          "quantityInEdition": 1,
+          "detailed": [
+            {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            },
+            {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            }
+          ]
+        },
+        {
+          "edditionName": "blbl",
+          "quantityInEdition": 1,
+          "detailed": [
+            {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            },
+                        {
+              "language": "fra",
+              "rarity": "common",
+              "state": "played"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "cardId": "123456",
+  "category": "",
+  "name": "blabla",
+  "imageLink": "htt",
+  "totalQuantity": 1,
+  "edition": [
+    {
+      "edditionName": "blbl",
+      "quantityInEdition": 1,
+      "detailed": [
+        {
+          "language": "fra",
+          "rarity": "common",
+          "state": "played"
+        }
+      ]
+    }
+  ]
+}
