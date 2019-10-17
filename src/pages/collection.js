@@ -9,20 +9,65 @@ const Collection = ({ data }) => {
       <SEO title="collection"></SEO>
       <h1>il faut bien commencer quelque part</h1>
       <br></br>
-      <>
-        <p>{GetCardName(data)}</p>
-      </>
+      <table>
+        <tbody>
+          <tr>
+            <td>YEAH</td>
+          </tr>
+          {CardIterationDisplay(data)}
+        </tbody>
+      </table>
       <Link to="/">homepage</Link>
     </Layout>
   )
 }
 
-function GetCardName(data) {
+function CardIterationDisplay(data) {
   const cardItemArray = []
-  data.allDataJson.edges.forEach(item => {
-    item.node.list.forEach(card => {
-      cardItemArray.push(<li key={card.cardId}>{card.name}</li>)
-    })
+
+  data.dataJson.list.slice(0, 200).forEach(card => {
+    cardItemArray.push(
+      <tr key={card.cardId}>
+        <td>
+          <img
+            src={card.imageLink}
+            alt="http://www.otk-expert.fr/cartes/yugioh/Dos-YGO.jpg"
+            width="100"
+            style={{ marginBottom: "0" }}
+          ></img>
+        </td>
+        {/* <td>categorie</td> */}
+        <td>{card.name}</td>
+        <td>{card.totalQuantity}</td>
+        <td>
+          <table style={{ marginBottom: "0" }}>
+            <tbody>
+              {card.edition.map(ed => (
+                <tr key={`${card.cardId}_${ed.editionReference}`}>
+                  <td>{ed.quantityInEdition}</td>
+                  <td>{ed.edditionName}</td>
+                  <td>{ed.editionReference}</td>
+                  <td>
+                    <table style={{ marginBottom: "0" }}>
+                      <tbody>
+                        {ed.detailed.map((det, index) => (
+                          <tr key={`${det.cardNumber}-${index}`}>
+                            <td>{det.cardNumber}</td>
+                            <td>{det.language}</td>
+                            <td>{det.rarity}</td>
+                            <td>{det.state}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    )
   })
 
   return cardItemArray
@@ -30,16 +75,22 @@ function GetCardName(data) {
 
 export const query = graphql`
   query giveMeMyCardsQuery {
-    allDataJson {
-      edges {
-        node {
-          id
-          list {
-            cardId
-            category
-            imageLink
-            name
-            totalQuantity
+    dataJson {
+      list {
+        cardId
+        category
+        imageLink
+        name
+        totalQuantity
+        edition {
+          edditionName
+          quantityInEdition
+          editionReference
+          detailed {
+            cardNumber
+            language
+            rarity
+            state
           }
         }
       }
