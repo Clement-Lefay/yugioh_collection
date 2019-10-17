@@ -1,0 +1,51 @@
+{
+  "list": [{
+      "cardId": "collecline217612",
+      "category": "effet",
+      "name": "Goku En - Méca Maléfique",
+      "imageLink": "http://www.otk-expert.fr/cartes/yugioh_ext/SR07/SR07-6.jpg",
+      "totalQuantity": 2,
+      "edition": [{
+          "editionReference": "SR07",
+          "edditionName": "Deck de Structure : La Horde de Zombies",
+          "quantityInEdition": 1,
+          "detailed": [{
+            "cardNumber": "SR07-FR006",
+            "language": "FRA",
+            "rarity": "Commune",
+            "state": "Jouée"
+          }]
+        },
+        {
+          "editionReference": "SDZW",
+          "edditionName": "Deck de Structure 15 : Monde des Zombies",
+          "quantityInEdition": 1,
+          "detailed": [{
+            "cardNumber": "SDZW-002",
+            "language": "FRA",
+            "rarity": "Commune",
+            "state": "Jouée"
+          }]
+        }
+      ]
+    },
+    {
+      "cardId": "collecline357373",
+      "category": "effet",
+      "name": "Bouffon Equilibriste",
+      "imageLink": "http://www.otk-expert.fr/cartes/yugioh_ext/SDCL/SDCL-20.jpg",
+      "totalQuantity": 1,
+      "edition": [{
+        "editionReference": "SDCL",
+        "edditionName": "Deck de Structure : Lien Cyberse",
+        "quantityInEdition": 1,
+        "detailed": [{
+          "cardNumber": "SDCL-FR020",
+          "language": "FRA",
+          "rarity": "Commune",
+          "state": "Jouée"
+        }]
+      }]
+    }
+  ]
+}
