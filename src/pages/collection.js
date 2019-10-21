@@ -1,7 +1,30 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+
+import "react-tabulator/lib/styles.css" // required styles
+import "react-tabulator/lib/css/tabulator.min.css" // theme
+import { ReactTabulator } from "react-tabulator"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+const columns = [
+  {
+    title: "Image",
+    field: "imageLink",
+    formatter: "image",
+    formatterParams: {
+      height: "150px",
+      width: "100px",
+    },
+    cellClick: function(e, cell) {
+      window.open(cell.getRow().getData().imageLink, "_blank")
+    },
+    width: 100,
+  },
+  { title: "name", field: "name", align: "center" },
+  { title: "Quantity", field: "totalQuantity", align: "center" },
+]
 
 const Collection = ({ data }) => {
   return (
@@ -15,6 +38,13 @@ const Collection = ({ data }) => {
             <td>YEAH</td>
           </tr>
           {CardIterationDisplay(data)}
+          {/* <ReactTabulator
+            data={data.dataJson.list}
+            columns={columns}
+            tooltips={false}
+            layout={"fitData"}
+            height={"300px"}
+          /> */}
         </tbody>
       </table>
       <Link to="/">homepage</Link>
