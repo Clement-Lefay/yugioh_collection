@@ -1,9 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import "react-tabulator/lib/styles.css" // required styles
 import "react-tabulator/lib/css/tabulator.min.css" // theme
 import { ReactTabulator } from "react-tabulator"
+import Tabulator from "tabulator-tables" //import Tabulator library
+import "tabulator-tables/dist/css/tabulator.min.css" //import Tabulator stylesheet
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -49,14 +51,7 @@ import SEO from "../components/seo"
 //   },
 // ]
 
-const columns = [
-  { title: "Category", field: "category", width: 150 },
-  { title: "Image", field: "imageLink", align: "left" },
-  { title: "name", field: "name" },
-  { title: "Quantity", field: "totalQuantity", align: "center" },
-]
-
-const columns2 = [
+const columnsCard = [
   {
     title: "Image",
     field: "imageLink",
@@ -67,6 +62,9 @@ const columns2 = [
     },
     cellClick: function(e, cell) {
       window.open(cell.getRow().getData().imageLink, "_blank")
+    },
+    tooltips: function(cell) {
+      return cell.getRow().getData().imageLink // take a look in the library and try to customize it
     },
     width: 100,
   },
@@ -88,10 +86,39 @@ const TabulatorPage = ({ data }) => (
     <h1>More detailed</h1>
     <ReactTabulator
       data={data.dataJson.list}
-      columns={columns2}
+      columns={columnsCard}
       tooltips={false}
-      layout={"fitData"}
-      height={"300px"}
+      layout={"fitColumns"}
+      resizableColumns={false}
+      height={"400px"}
+      rowFormatter={row => {
+        // documentation: http://tabulator.info/examples/4.0#nested-tables
+        //create and style holder elements
+        var holderEl = document.createElement("div")
+        var tableEl = document.createElement("div")
+
+        holderEl.style.boxSizing = "border-box"
+        holderEl.style.padding = "10px 30px 10px 10px"
+        holderEl.style.borderTop = "1px solid #333"
+        holderEl.style.borderBotom = "1px solid #333"
+        holderEl.style.background = "#ddd"
+
+        tableEl.style.border = "1px solid #333"
+
+        holderEl.appendChild(tableEl)
+
+        row.getElement().appendChild(tableEl)
+
+        var subTable = new Tabulator(tableEl, {
+          layout: "fitColumns",
+          data: row.getData().edition,
+          columns: [
+            { title: "Edition", field: "edditionName" },
+            { title: "ref", field: "editionReference" },
+            { title: "Quantity", field: "quantityInEdition", align: "center" },
+          ],
+        })
+      }}
     />
     <Link to="/">Go back to the homepage</Link>
   </Layout>
@@ -106,6 +133,11 @@ export const query = graphql`
         imageLink
         name
         totalQuantity
+        edition {
+          edditionName
+          quantityInEdition
+          editionReference
+        }
       }
     }
   }
