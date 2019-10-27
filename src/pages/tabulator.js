@@ -83,12 +83,11 @@ const TabulatorPage = ({ data }) => (
       layout={"fitData"}
       height={300}
     /> */}
-    <h1>More detailed</h1>
     <ReactTabulator
       data={data.dataJson.list}
       columns={columnsCard}
       tooltips={false}
-      layout={"fitColumns"}
+      // layout="fitColumns"
       resizableColumns={false}
       height={"400px"}
       rowFormatter={row => {
@@ -112,10 +111,18 @@ const TabulatorPage = ({ data }) => (
         var subTable = new Tabulator(tableEl, {
           layout: "fitColumns",
           data: row.getData().edition,
+          dataTree: true,
+          dataTreeStartExpanded: false,
+          dataTreeChildField: "detailed",
+          // dataTreeElementColumn: "cardNumber",
           columns: [
             { title: "Edition", field: "edditionName" },
-            { title: "ref", field: "editionReference" },
+            { title: "Reference Edition", field: "editionReference" },
             { title: "Quantity", field: "quantityInEdition", align: "center" },
+            { title: "Card code", field: "cardNumber" },
+            { title: "Language", field: "language" },
+            { title: "Rarity", field: "rarity" },
+            { title: "State", field: "state" },
           ],
         })
       }}
@@ -137,6 +144,12 @@ export const query = graphql`
           edditionName
           quantityInEdition
           editionReference
+          detailed {
+            cardNumber
+            language
+            rarity
+            state
+          }
         }
       }
     }
