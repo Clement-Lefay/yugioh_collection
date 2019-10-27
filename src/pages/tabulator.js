@@ -52,23 +52,34 @@ import SEO from "../components/seo"
 // ]
 
 const columnsCard = [
+  // {
+  //   title: "Image",
+  //   field: "imageLink",
+  //   formatter: "image",
+  //   formatterParams: {
+  //     height: "150px",
+  //     width: "100px",
+  //   },
+  //   cellClick: function(e, cell) {
+  //     window.open(cell.getRow().getData().imageLink, "_blank")
+  //   },
+  //   tooltips: function(cell) {
+  //     return cell.getRow().getData().imageLink // take a look in the library and try to customize it
+  //   },
+  //   width: 100,
+  // },
   {
-    title: "Image",
-    field: "imageLink",
-    formatter: "image",
-    formatterParams: {
-      height: "150px",
-      width: "100px",
-    },
+    title: "name",
+    field: "name",
+    align: "center",
+
+    headerFilter: true,
+    headerFilterPlaceholder: "Find a card",
+    tooltip: "Click to see the image of the card",
     cellClick: function(e, cell) {
       window.open(cell.getRow().getData().imageLink, "_blank")
     },
-    tooltips: function(cell) {
-      return cell.getRow().getData().imageLink // take a look in the library and try to customize it
-    },
-    width: 100,
   },
-  { title: "name", field: "name", align: "center" },
   { title: "Quantity", field: "totalQuantity", align: "center" },
 ]
 
@@ -87,8 +98,10 @@ const TabulatorPage = ({ data }) => (
       data={data.dataJson.list}
       columns={columnsCard}
       tooltips={false}
-      // layout="fitColumns"
       resizableColumns={false}
+      initialSort={[
+        { column: "name", dir: "asc" }, //sort by this first
+      ]}
       height={"400px"}
       rowFormatter={row => {
         // documentation: http://tabulator.info/examples/4.0#nested-tables
