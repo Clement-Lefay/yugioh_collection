@@ -57,7 +57,7 @@ function CardIterationDisplay(data) {
     return a.name.localeCompare(b.name)
   })
 
-  cardItemArraySorted.slice(1250, 1300).forEach(card => {
+  cardItemArraySorted.forEach(card => {
     cardItemArray.push(
       <tr key={card.cardId}>
         <td>
