@@ -57,10 +57,10 @@ function CardIterationDisplay(data) {
     return a.name.localeCompare(b.name)
   })
 
-  cardItemArraySorted.slice(0, 20).forEach(card => {
+  cardItemArraySorted.slice(700, 750).forEach(card => {
     cardItemArray.push(
       <tr key={card.cardId}>
-        <td style={{ width: "100px" }}>
+        <td>
           <img
             src={card.imageLink}
             alt="http://www.otk-expert.fr/cartes/yugioh/Dos-YGO.jpg"
@@ -72,9 +72,9 @@ function CardIterationDisplay(data) {
           ></img>
         </td>
         {/* <td>categorie</td> */}
-        <td width="20%">{card.name}</td>
-        <td width="10%">{card.totalQuantity}</td>
-        <td width="50%">
+        <td>{card.name}</td>
+        <td>{card.totalQuantity}</td>
+        <td>
           <table style={{ marginBottom: "0" }}>
             <tbody>
               {card.edition.map(ed => (
