@@ -30,13 +30,10 @@ const Collection = ({ data }) => {
   return (
     <Layout>
       <SEO title="collection"></SEO>
-      <h1>il faut bien commencer quelque part</h1>
+      <h1>Toute les cartes de ma collection</h1>
       <br></br>
       <table>
         <tbody>
-          <tr>
-            <td>YEAH</td>
-          </tr>
           {CardIterationDisplay(data)}
           {/* <ReactTabulator
             data={data.dataJson.list}
@@ -55,21 +52,29 @@ const Collection = ({ data }) => {
 function CardIterationDisplay(data) {
   const cardItemArray = []
 
-  data.dataJson.list.slice(0, 200).forEach(card => {
+  // Sort by category and then by alphabetic order in color
+  const cardItemArraySorted = data.dataJson.list.sort(function(a, b) {
+    return a.name.localeCompare(b.name)
+  })
+
+  cardItemArraySorted.slice(0, 20).forEach(card => {
     cardItemArray.push(
       <tr key={card.cardId}>
-        <td>
+        <td style={{ width: "100px" }}>
           <img
             src={card.imageLink}
             alt="http://www.otk-expert.fr/cartes/yugioh/Dos-YGO.jpg"
-            width="100"
-            style={{ marginBottom: "0" }}
+            width="50%"
+            style={{ marginBottom: "0", cursor: "pointer" }}
+            onClick={function() {
+              window.open(card.imageLink, "_blank")
+            }}
           ></img>
         </td>
         {/* <td>categorie</td> */}
-        <td>{card.name}</td>
-        <td>{card.totalQuantity}</td>
-        <td>
+        <td width="20%">{card.name}</td>
+        <td width="10%">{card.totalQuantity}</td>
+        <td width="50%">
           <table style={{ marginBottom: "0" }}>
             <tbody>
               {card.edition.map(ed => (
