@@ -1,0 +1,11 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "window.zoomLevel": -2,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "extensions.ignoreRecommendations": true,
+  "editor.tabSize": 2,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true
+}
